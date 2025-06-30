@@ -1,0 +1,21 @@
+.underline-animate {
+  position: relative;
+  overflow: hidden;
+}
+.underline-animate::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+.underline-animate:hover::after,
+.underline-animate:focus::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}

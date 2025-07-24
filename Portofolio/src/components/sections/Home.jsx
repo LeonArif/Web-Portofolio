@@ -1,84 +1,240 @@
-import PixelTransition from './../../animations/effects/PixelTransition';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import "./../css/Navbar.css";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const ballRef = useRef(null);
+  const starRef = useRef(null);
+  const hiRef = useRef(null);
+  const typeRef = useRef(null);
+  const descRef = useRef(null);
+
+  useEffect(() => {
+    const ball = ballRef.current;
+    const star = starRef.current;
+    const hi = hiRef.current;
+    const type = typeRef.current;
+    const desc = descRef.current;
+
+    if (!ball || !star || !hi || !type || !desc) return;
+
+    const starLength = star.getTotalLength();
+    star.style.strokeDasharray = starLength;
+    star.style.strokeDashoffset = starLength;
+
+    // Bola: posisi awal di kanan (x: 400px), visible
+    gsap.set(ball, { x: 400, opacity: 1 });
+    // Bintang: disembunyikan dulu
+    gsap.set(star, { opacity: 0 });
+    // Teks: posisi awal di kiri + transparan
+    gsap.set([hi, type, desc ], { x: -200, opacity: 0 });
+
+    // Timeline animasi: bola gelinding ke tengah, bintang, lalu teks2 masuk dari kiri
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ball,
+        start: "top 80%",
+        toggleActions: "play none none none",
+        // markers: true, // aktifkan untuk debug
+      }
+    });
+
+    // Step 1: Bola gelinding ke tengah
+    tl.to(ball, {
+      x: 0,
+      duration: 1.2,
+      ease: "power2.inOut"
+    });
+
+    // Step 2: Bintang muncul dan tergambar
+    tl.to(star, {
+      opacity: 1,
+      duration: 0.1,
+      ease: "none"
+    });
+    tl.to(star, {
+      strokeDashoffset: 0,
+      duration: 1,
+      ease: "power1.inOut"
+    }, "-=0.1"); // mulai hampir bersamaan dengan opacity
+
+    // Step 3: Teks-teks masuk dari kiri satu per satu
+    tl.to(hi, {
+      x: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out"
+    }, "+=0.2");
+    tl.to(type, {
+      x: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out"
+    }, "-=0.4");
+    tl.to(desc, {
+      x: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out"
+    }, "-=0.4");
+  }, []);
+
   return (
     <>
-    <div className="bg-gray-800">
       {/* Section Home */}
-      <div
-        id="home"
-        className="flex flex-col lg:flex-row justify-between items-center py-40 text-white px-4 lg:px-16"
-      >
-        {/* Kiri - Tulisan */}
-        <div className="flex-1 max-w-4xl px-4 md:px-10 mb-10 lg:mb-0">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2">Leonard Arif Sutiono</h1>
-          <h2 className="text-2xl mb-8">Software Engineer</h2>
-          <p className="mb-12">
-            Hello, I’m Leonard — a Software Engineer with a strong focus on full-stack web development. I love crafting high-quality digital products, learning new technologies, and collaborating with others to solve real-world problems. Welcome to my portfolio!
-          </p>
-          <div className="flex gap-8 md:gap-16">
-            <a href="https://github.com/LeonArif" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faGithub} className="text-3xl" />
-            </a>
-            <a href="https://www.instagram.com/leonarifs/" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faInstagram} className="text-3xl" />
-            </a>
-            <a href="https://www.linkedin.com/in/leon-arif-b743b52a7/" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faLinkedin} className="text-3xl" />
-            </a>
-          </div>
-        </div>
-
-        {/* Kanan - Gambar dengan PixelTransition */}
-        <div className="flex-1 max-w-xs md:max-w-md lg:max-w-lg flex justify-center">
-          <PixelTransition
-            firstContent={
-              <img
-                src="src/assets/new_arc.jpg"
-                style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "16px" }}
-                alt="Hero"
-              />
-            }
-            secondContent={
-              <img
-                src="src/assets/new_arc.jpg"
-                style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "16px" }}
-                alt="Hero"
-              />
-            }
-            gridSize={12}
-            pixelColor="#ffffff"
-            animationStepDuration={0.4}
-            className="custom-pixel-card w-[250px] h-[250px] md:w-[320px] md:h-[320px] lg:w-[370px] lg:h-[370px]"
-          />
-        </div>
-      </div>
-
-      {/* SVG Wave di bawahnya */}
-        <div className="w-full overflow-hidden leading-none">
-          <svg
-            viewBox="0 0 1440 220"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-32 md:h-40"
-            preserveAspectRatio="none"
-          >
-            {/* Gelombang atas (lebih transparan) */}
-            <path
-              d="M0,120 Q360,60 720,120 T1440,120 L1440,220 L0,220 Z"
-              fill="#a78bfa"
-              opacity="0.3"
-            />
-            {/* Gelombang bawah (warna lebih kuat) */}
-            <path
-              d="M0,160 Q360,100 720,160 T1440,160 L1440,220 L0,220 Z"
-              fill="#7c3aed"
-              opacity="0.4"
+      <nav className="flex top-0 justify-between items-center z-50 px-36 py-5">
+        <div className="flex items-center text-white">
+          {/* Star logo kecil di navbar */}
+          <svg width="32" height="32" viewBox="0 0 200 200">
+            <polyline
+              points="100,20 123,82 190,82 136,125 155,190 100,150 45,190 64,125 10,82 77,82 100,20"
+              stroke="#FFD700"
+              strokeWidth="8"
+              fill="none"
             />
           </svg>
+          <span className="ml-6">LEONARD</span>
         </div>
+        <div className="flex gap-14">
+          <button
+            className="px-2 py-1 rounded text-white underline-animate"
+            onClick={() => {
+              const el = document.getElementById('about');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            ABOUT ME
+          </button>
+          <button
+            className="px-2 py-1 rounded text-white underline-animate"
+            onClick={() => {
+              const el = document.getElementById('projects');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            PROJECTS
+          </button>
+          <button
+            className="px-2 py-1 rounded text-white underline-animate"
+            onClick={() => {
+              const el = document.getElementById('contacts');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            CONTACTS
+          </button>
+        </div>
+      </nav>
+      {/* Section Home */}
+      <section
+        id="home"
+        className="scroll-mt-24 flex flex-col items-center justify-center min-h-[80vh] pb-20 text-white px-6"
+      >
+        {/* Star SVG animasi (GSAP) menggantikan avatar dan background */}
+        <motion.div
+          className="relative flex items-center justify-center w-full"
+          style={{
+            minHeight: "unset",
+            marginBottom: 4,
+          }}
+        >
+          <svg
+            width="250"
+            height="250"
+            viewBox="0 0 200 200"
+            style={{
+              display: 'block',
+              margin: '0 auto',
+              zIndex: 2,
+              background: 'rgba(20,20,30,0.3)',
+              borderRadius: '50%',
+              boxShadow: '0 4px 32px 0 #FFD70050',
+              padding: "14px",
+              maxWidth: "100%",
+              marginBottom: "8px",
+            }}
+          >
+            {/* Bola hitam/transparan di belakang bintang */}
+            <circle
+              ref={ballRef}
+              cx="100"
+              cy="100"
+              r="90"
+              fill="rgba(20,20,30,0.9)"
+              style={{
+                filter: "drop-shadow(0 0 32px #FFD700)",
+                transition: "box-shadow 0.3s",
+              }}
+            />
+            {/* Polyline bintang */}
+            <polyline
+              ref={starRef}
+              points="98.5,10 122,78 180,78 130,120 148,170 100,140 52,170 70,120 20,78 78,78 100,10"
+              stroke="#FFD700"
+              strokeWidth="8"
+              fill="none"
+              style={{
+                filter: "drop-shadow(0 0 10px #FFD700)",
+              }}
+            />
+          </svg>
+        </motion.div>
+        {/* Judul besar */}
+        <motion.h1
+          ref={hiRef}
+          className="text-5xl md:text-5xl mb-5 text-center font-bold"
+        >
+          Turning your ideas into reality!
+        </motion.h1>
+        {/* TypeAnimation */}
+        <motion.p
+          ref={typeRef}
+          className="text-xl md:text-2xl mb-4 text-center font-semibold"
+        >
+          Specializing in —{" "}
+          <TypeAnimation
+            sequence={[
+              "Front-end Website",
+              1500,
+              "Back-end Solutions",
+              1500,
+              "WordPress Sites",
+              1500,
+              "UI/UX Designs",
+              1500,
+              "All the projects you imagine!",
+              1500,
+            ]}
+            wrapper="span"
+            speed={50}
+            style={{ display: "inline-block" }}
+            repeat={Infinity}
+          />
+        </motion.p>
+        {/* Deskripsi */}
+        <motion.p
+          ref={descRef}
+          className="max-w-2xl text-base md:text-lg text-center mb-12"
+        >
+          Every project begins with a single wish—let’s fulfill yours!
+        </motion.p>
+        {/* Social icons */}
+      </section>
+      {/* Bottom gradient line */}
+      <div className="w-full flex justify-center mt-5 mb-20">
+        <div
+          style={{
+            height: '2px',
+            width: '80%',
+            borderRadius: '4px',
+            background: 'linear-gradient(90deg, rgba(255,180,0,0) 0%, #FFD700 20%, #222 50%, #FFD700 80%, rgba(255,215,0,0) 100%)',
+          }}
+        />
       </div>
     </>
   );

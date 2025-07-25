@@ -113,6 +113,15 @@ export default function Home() {
           <button
             className="px-2 py-1 rounded text-white underline-animate"
             onClick={() => {
+              const el = document.getElementById('experience');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            EXPERIENCE
+          </button>
+          <button
+            className="px-2 py-1 rounded text-white underline-animate"
+            onClick={() => {
               const el = document.getElementById('projects');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}

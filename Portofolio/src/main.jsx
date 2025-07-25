@@ -10,13 +10,12 @@ import Projects from './components/sections/Projects.jsx'
 
 function App() {
   const homeRef = useRef(null)
-  const [bg, setBg] = useState('#000') // hitam
+  const [bg, setBg] = useState('#000')
 
   useEffect(() => {
     const handleScroll = () => {
       if (!homeRef.current) return
       const homeBottom = homeRef.current.getBoundingClientRect().bottom
-      // Jika bagian bawah Home sudah lewat atas viewport, ubah bg jadi putih
       if (homeBottom < 100) {
         setBg('#fff')
       } else {
@@ -24,7 +23,6 @@ function App() {
       }
     }
     window.addEventListener('scroll', handleScroll)
-    // Jalankan langsung saat mount, biar bg sesuai posisi awal scroll
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -35,7 +33,6 @@ function App() {
         background: bg,
         minHeight: '100vh',
         transition: 'background 0.5s',
-        // width: '100vw',
       }}
     >
       <StrictMode>
@@ -43,7 +40,7 @@ function App() {
           <Home />
           <About />
         </div>
-        <Experience />
+        <Experience visible={bg === "#fff"} />
         <Organization />
         <Projects />
         <Contacts />
@@ -52,5 +49,4 @@ function App() {
   )
 }
 
-// Render ke root
 createRoot(document.getElementById('root')).render(<App />)

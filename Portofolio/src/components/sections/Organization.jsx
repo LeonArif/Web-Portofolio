@@ -1,4 +1,13 @@
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Organization() {
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
+
   const items = [
     {
       img: "src/assets/new_arc.jpg",
@@ -19,16 +28,63 @@ export default function Organization() {
       desc: "Jadilah bagian dari komunitas yang mendukung pengembangan diri dan profesionalisme."
     }
   ];
+
+  useEffect(() => {
+    if (!sectionRef.current || !headerRef.current) return;
+
+    gsap.set([headerRef.current, ".org-card"], { clearProps: "all" });
+    gsap.set(".org-card", { opacity: 0, x: 60, scale: 0.97 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    tl.from(headerRef.current, {
+      x: -80,
+      opacity: 0,
+      duration: 0.7,
+      ease: "power3.out",
+    })
+    .to(
+      ".org-card",
+      {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.3,
+        ease: "expo.out",
+        stagger: {
+          each: 0.1,
+          from: "start"
+        },
+      },
+      "+=0.1"
+    );
+
+    return () => {
+      tl.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
-    
-    <div className="flex flex-col items-center gap-14 min-h-[60vh] mb-12">
-        <div>
-            <h1 className="text-5xl font-bold  text-center mb-8">Organizations</h1>
-        </div>
+    <div
+      ref={sectionRef}
+      className="flex flex-col -mt-64 items-center gap-14 min-h-[60vh] mb-12"
+    >
+      <div ref={headerRef}>
+        <h1 className="text-5xl font-bold text-center mb-4">Organizations</h1>
+        <p className="text-center mb-4" >my organization lol</p>
+      </div>
       {items.map((item, idx) => (
         <div
           key={idx}
           className="
+            org-card
             group flex items-center
             w-full max-w-7xl
             px-12 py-8
@@ -59,18 +115,16 @@ export default function Organization() {
             <p className="text-lg font-medium mb-1 text-[#FFD700]">{item.subtitle}</p>
             <p className="text-base text-[#222]">{item.desc}</p>
           </div>
-          
         </div>
       ))}
-        <div className="mt-14"
-          style={{
-            height: '2px',
-            width: '80%',
-            borderRadius: '4px',
-            background: 'linear-gradient(90deg, rgba(255,180,0,0) 0%, #FFD700 20%, #222 50%, #FFD700 80%, rgba(255,215,0,0) 100%)',
-          }}
-        />
+      <div className="mt-14"
+        style={{
+          height: '2px',
+          width: '80%',
+          borderRadius: '4px',
+          background: 'linear-gradient(90deg, rgba(255,180,0,0) 0%, #FFD700 20%, #222 50%, #FFD700 80%, rgba(255,215,0,0) 100%)',
+        }}
+      />
     </div>
-    
   );
 }

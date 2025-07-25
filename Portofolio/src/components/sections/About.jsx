@@ -65,25 +65,25 @@ export default function About({ avatarRef: parentAvatarRef }) {
       onComplete: () => setShowPixelTransition(true)
     })
     .from(helloRef.current, {
-      x: 150,
+      x: 100,
       opacity: 0,
       duration: 0.2,
       ease: "power2.out"
     })
     .from(nameRef.current, {
-      x: 150,
+      x: 100,
       opacity: 0,
       duration: 0.2,
       ease: "power2.out"
     })
     .from(descRef.current, {
-      x: 150,
+      x: 100,
       opacity: 0,
       duration: 0.2,
       ease: "power2.out"
     })
     .from(socialRef.current, {
-      x: 150,
+      x: 100,
       opacity: 0,
       duration: 0.2,
       ease: "power2.out"
@@ -96,7 +96,7 @@ export default function About({ avatarRef: parentAvatarRef }) {
   }, []);
 
   return (
-    <div id="about" ref={aboutSectionRef}>
+    <div id="about" className="scroll-mt-24" ref={aboutSectionRef}>
       <div>
         <h1 ref={titleRef} className="text-5xl text-center text-white">About Me</h1>
       </div>

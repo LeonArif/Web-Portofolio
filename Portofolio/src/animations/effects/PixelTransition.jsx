@@ -1,11 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
-import './PixelTransition.css';
 
 function PixelTransition({
   firstContent,
   secondContent,
-  gridSize = 7,
+  gridSize = 20,
   pixelColor = 'currentColor',
   animationStepDuration = 0.3,
   className = '',
@@ -34,6 +33,7 @@ function PixelTransition({
       for (let col = 0; col < gridSize; col++) {
         const pixel = document.createElement('div');
         pixel.classList.add('pixelated-image-card__pixel');
+        pixel.classList.add('absolute', 'hidden');
         pixel.style.backgroundColor = pixelColor;
 
         const size = 100 / gridSize;
@@ -41,6 +41,7 @@ function PixelTransition({
         pixel.style.height = `${size}%`;
         pixel.style.left = `${col * size}%`;
         pixel.style.top = `${row * size}%`;
+
         pixelGridEl.appendChild(pixel);
       }
     }
@@ -104,20 +105,41 @@ function PixelTransition({
   return (
     <div
       ref={containerRef}
-      className={`pixelated-image-card ${className}`}
+      className={`
+        ${className}
+        bg-[#271E37]
+        text-white
+        rounded-[15px]
+        border-2
+        border-white
+        w-[360px]
+        max-w-full
+        relative
+        overflow-hidden
+      `}
       style={style}
       onMouseEnter={!isTouchDevice ? handleMouseEnter : undefined}
       onMouseLeave={!isTouchDevice ? handleMouseLeave : undefined}
       onClick={isTouchDevice ? handleClick : undefined}
     >
       <div style={{ paddingTop: aspectRatio }} />
-      <div className="pixelated-image-card__default">
+
+      <div className="absolute inset-0 w-full h-full">
         {firstContent}
       </div>
-      <div className="pixelated-image-card__active" ref={activeRef}>
+
+      <div
+        ref={activeRef}
+        className="absolute inset-0 w-full h-full z-[2]"
+        style={{ display: 'none' }}
+      >
         {secondContent}
       </div>
-      <div className="pixelated-image-card__pixels" ref={pixelGridRef} />
+
+      <div
+        ref={pixelGridRef}
+        className="absolute inset-0 w-full h-full pointer-events-none z-[3]"
+      />
     </div>
   );
 }

@@ -112,7 +112,7 @@ export default function About({ avatarRef: parentAvatarRef }) {
             <PixelTransition
               firstContent={
                 <img
-                  src= "src/assets/about/foto_1.jpg"
+                  src= "/images/about/foto_1.jpg"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -126,7 +126,7 @@ export default function About({ avatarRef: parentAvatarRef }) {
               }
               secondContent={
                 <img
-                  src="src/assets/about/foto_2.jpg"
+                  src="/images/about/foto_2.jpg"
                   style={{
                     width: "100%",
                     height: "100%",

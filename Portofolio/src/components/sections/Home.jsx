@@ -90,7 +90,7 @@ export default function Home() {
       <nav className="flex top-0 justify-between items-center z-50 px-20 py-5">
         <div className="flex items-center text-white">
           {/* Star logo kecil di navbar */}
-          <img className="w-8 ml-4" src="./src/assets/navbar/pp.png"/>
+          <img className="w-8 ml-4" src="/images/navbar/pp.png"/>
           <span className="ml-2">LEONARD</span>
         </div>
         <div className="flex gap-14">

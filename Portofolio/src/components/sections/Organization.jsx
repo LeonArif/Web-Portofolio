@@ -10,19 +10,19 @@ export default function Organization() {
 
   const items = [
     {
-      img: "src/assets/organization/hmif.png",
+      img: "/images/organization/hmif.png",
       title: "HMIF ITB",
       subtitle: "Himpunan Mahasiswa Informatika ITB",
       desc: "Member of HMIF ITB, community for ITB Informatics students",
     },
     {
-      img: "src/assets/organization/uro.png",
+      img: "/images/organization/uro.png",
       title: "URO ITB",
       subtitle: "Unit Robotika ITB",
       desc: "Programmer Division in Viva La Ganesha (KRSRI) Robotic Team, focusing on learning and researching in SAR (Search and Rescue) Robotics"
     },
     {
-      img: "src/assets/organization/arc.png",
+      img: "/images/organization/arc.png",
       title: "ARC ITB",
       subtitle: "Amateur Radio Club ITB",
       desc: "Member in Amateur Radio Club ITB, focusing on learning and practicing software engineering"

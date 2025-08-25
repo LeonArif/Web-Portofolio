@@ -12,21 +12,21 @@ export default function Projects() {
 
   const projects = [
     {
-      img: "src/assets/project/stressdew.png",
+      img: "/images/project/stressdew.png",
       title: "Stressdew Valley",
       desc: "Final project for Object Oriented Programming Class",
       detail: "A Stardew Valley clone developed by a team of five using Java and Java Swing for the GUI. The game features core mechanics such as fishing, planting, and more, offering players a similar farming and life simulation experience. All gameplay elements and interface were built collaboratively, demonstrating teamwork and strong Java programming skills.",
       tools: ["Java", "Github", "Java Swing"]
     },
     {
-      img: "src/assets/project/adauang.png",
+      img: "/images/project/adauang.png",
       title: "AdaUang",
       desc: "Final project for Software Engineering Class",
       detail: "A loan tracking application developed by a team of six using Java. The app includes features such as authentication, financial report generation, monthly payment tracking, contract viewing, and more. It implements role-based access for admin, user, and staff, with each role accessing different sets of features. This project showcases strong collaboration and practical implementation of user management and financial tracking systems.",
       tools: ["Java", "Github", "Java Swing"]
     },
     {
-      img: "src/assets/project/iitproyek.png",
+      img: "/images/project/iitproyek.png",
       title: "IIT Project",
       desc: "Internship Project for IIT Tech Department",
       detail: "A project management web application built by a team of three using React, Node.js, TypeScript, SQL, Drizzle, and GitHub. The website enables users to submit and manage their own personal project requests, including specifying requirements and tracking project progress. This platform streamlines the process of collecting user specifications and managing project workflows efficiently.",

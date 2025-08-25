@@ -7,5 +7,4 @@ export default defineConfig({
     react(),
     svgr(),
   ],
-  base: process.env.VITE_BASE_PATH || "/Web-Portofolio",
 })

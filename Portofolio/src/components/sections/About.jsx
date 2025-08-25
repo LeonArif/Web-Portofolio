@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import heroImg from '../../assets/new_arc.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,7 +112,7 @@ export default function About({ avatarRef: parentAvatarRef }) {
             <PixelTransition
               firstContent={
                 <img
-                  src={heroImg}
+                  src= "src/assets/about/foto_1.jpg"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -127,7 +126,7 @@ export default function About({ avatarRef: parentAvatarRef }) {
               }
               secondContent={
                 <img
-                  src={heroImg}
+                  src="src/assets/about/foto_2.jpg"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -160,8 +159,7 @@ export default function About({ avatarRef: parentAvatarRef }) {
           <h1 ref={helloRef} className="text-5xl font-bold mb-3">Hello!</h1>
           <h2 ref={nameRef} className="text-2xl mb-8">I'm Leonard</h2>
           <p ref={descRef}>
-            A System Information Undergraduate with a strong focus on full-stack web development.
-            I love crafting high-quality digital products, learning new technologies, and collaborating with others to solve real-world problems. Welcome to my portfolio!
+            I am a System Information undergraduate specializing in full-stack web development, with skills in front-end, back-end, WordPress, and UI/UX design. I enjoy building digital products, learning new technologies, and collaborating to solve real-world problems. Currently, I’m interested in software engineering, data, and cybersecurity. Welcome to my portfolio!
           </p>
           <div ref={socialRef} className="flex md:gap-20 mt-8">
             <a href="https://github.com/LeonArif" target="_blank" rel="noopener noreferrer">

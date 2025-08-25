@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, scale } from "framer-motion";
 import Carousel from "./../../animations/effects/Carousel";
 
 const CAROUSEL_WIDTH = 520;
@@ -13,27 +13,95 @@ const expData = [
     year: 2023,
     side: "left",
     carouselItems: [
-      { title: "Text Animations", description: "Cool text animations for your projects.", id: 1, image: "src/assets/new_arc.jpg" },
-      { title: "2023 Special", description: "Animasi khusus tahun 2023.", id: 2, image: "src/assets/new_arc.jpg" },
-    ],
+      {
+        title: "Google Developer Student Club (GDSC)",
+        description: "GDSC Participant",
+        id: 1,
+        image: "src/assets/experience/gdsc.png",
+        scaleBefore: 4,
+        scaleAfter: 2,
+        brightnessBefore: 1,
+        brightnessAfter: 1,
+        bgColor: "#fff"
+      },
+      {
+        title: "Sekolah URO ITB (SEKURO)",
+        description: "Learner in \"Sekolah Unit Robotika ITB\"",
+        id: 2,
+        image: "src/assets/experience/uro.png",
+        scaleBefore: 4,
+        scaleAfter: 2,
+        brightnessBefore: 1,
+        brightnessAfter: 1,
+        bgColor: "#fff"
+      }
+    ]
   },
   {
     year: 2024,
     side: "right",
     carouselItems: [
-      { title: "Components", description: "Reusable components for your projects.", id: 3, image: "src/assets/new_arc.jpg" },
-      { title: "2024 Launch", description: "Peluncuran besar di tahun 2024.", id: 4, image: "src/assets/new_arc.jpg" },
-    ],
+      {
+        title: "Wisuda April 2024 (WISPRIL 2024)",
+        description: "Wisuda April 2024 Web Developer",
+        id: 3,
+        image: "src/assets/experience/wispril.jpg",
+        scaleBefore: 4,
+        scaleAfter: 2,
+        bgColor: "#383838"
+      },
+      {
+        title: "Computational Thinking (CompThink)",
+        description: "Computational Thinking Class Practicum Assistant",
+        id: 4,
+        image: "src/assets/experience/compthink.jpg",
+        scaleBefore: 2,
+        scaleAfter: 1,
+        brightnessBefore: 1,
+        brightnessAfter: 1,
+        bgColor: "#fff"
+      },
+      {
+        title: "Inkubator IT (IIT)",
+        description: "Inkubator IT Tech Intern",
+        id: 4,
+        image: "src/assets/experience/iit.jpg",
+        scaleBefore: 2,
+        scaleAfter: 1,
+        brightnessBefore: 1,
+        brightnessAfter: 1,
+        bgColor: "#fff"
+      }
+    ]
   },
   {
     year: 2025,
     side: "left",
     carouselItems: [
-      { title: "Common UI", description: "Common UI components are coming soon!", id: 5, image: "src/assets/new_arc.jpg" },
-      { title: "2025 Vision", description: "Rencana masa depan 2025.", id: 6, image: "src/assets/new_arc.jpg" },
-      { title: "2025 Vision", description: "lorem ipsum dolor sit amet consectetur adipisicing elit.", id: 7, image: "src/assets/new_arc.jpg" },
-    ],
-  },
+      {
+        title: "FindIT 2025 UGM",
+        description: "Find IT 2025 CTF Competition Participant",
+        id: 7,
+        image: "src/assets/experience/findit.jpg",
+        scaleBefore: 2,
+        scaleAfter: 1,
+        brightnessBefore: 1,
+        brightnessAfter: 1,
+        bgColor: "#fff"
+      },
+      {
+        title: "Inkubator IT (IIT)",
+        description: "Inkubator IT Bussiness Development",
+        id: 4,
+        image: "src/assets/experience/iit.jpg",
+        scaleBefore: 2,
+        scaleAfter: 1,
+        brightnessBefore: 1,
+        brightnessAfter: 1,
+        bgColor: "#fff"
+      }
+    ]
+  }
 ];
 
 const positions = [
@@ -69,12 +137,12 @@ export default function ExperienceTimeline() {
       <motion.section
         id='experience'
         key="exp-section"
-        className="scroll-mt-24 mt-2 w-full font-bold flex flex-col items-center relative"
+        className="scroll-mt-24 mt-2 w-full font-semibold flex flex-col items-center relative"
         style={{ minHeight: TIMELINE_HEIGHT + 200 }}
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 40 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
       >
         {/* Animated Title */}
         <motion.h1
@@ -91,7 +159,7 @@ export default function ExperienceTimeline() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
         >
-          tes
+          These are some of my experiences in various organizations and committees.
         </motion.h1>
 
         {/* Timeline wrapper */}
@@ -131,7 +199,7 @@ export default function ExperienceTimeline() {
                 onMouseLeave={() => setHovered(null)}
               >
                 <span
-                  className={`font-bold text-black absolute left-1/2 top-1/2
+                  className={`font-semibold text-black absolute left-1/2 top-1/2
                     transition-all duration-300
                     ${hovered === idx ? "text-2xl opacity-100" : "text-lg opacity-0"}
                   `}

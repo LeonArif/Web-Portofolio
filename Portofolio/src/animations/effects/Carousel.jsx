@@ -14,30 +14,35 @@ const DEFAULT_ITEMS = [
     title: "Text Animations",
     description: "Cool text animations for your projects.",
     id: 1,
+    image: "/path/to/image1.jpg", // Ganti dengan path/image yang valid
     icon: <FiFileText className="h-[16px] w-[16px] text-white" />,
   },
   {
     title: "Animations",
     description: "Smooth animations for your projects.",
     id: 2,
+    image: "/path/to/image2.jpg",
     icon: <FiCircle className="h-[16px] w-[16px] text-white" />,
   },
   {
     title: "Components",
     description: "Reusable components for your projects.",
     id: 3,
+    image: "/path/to/image3.jpg",
     icon: <FiLayers className="h-[16px] w-[16px] text-white" />,
   },
   {
     title: "Backgrounds",
     description: "Beautiful backgrounds and patterns for your projects.",
     id: 4,
+    image: "/path/to/image4.jpg",
     icon: <FiLayout className="h-[16px] w-[16px] text-white" />,
   },
   {
     title: "Common UI",
     description: "Common UI components are coming soon!",
     id: 5,
+    image: "/path/to/image5.jpg",
     icon: <FiCode className="h-[16px] w-[16px] text-white" />,
   },
 ];
@@ -55,7 +60,7 @@ export default function Carousel({
   pauseOnHover = false,
   loop = false,
   round = false,
-  height
+  
 }) {
   const containerPadding = 16;
   const itemWidth = baseWidth - containerPadding * 2;
@@ -66,6 +71,7 @@ export default function Carousel({
   const x = useMotionValue(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const containerRef = useRef(null);
   useEffect(() => {
@@ -159,7 +165,7 @@ export default function Carousel({
     <div
       ref={containerRef}
       className={`relative overflow-hidden p-4 ${
-        round ? "rounded-full border border-white" : "bg-white rounded-[24px] border border-[#222]"
+        round ? "rounded-full border border-white" : "bg-yellow-300 rounded-[20px] border border-[#222]"
       }`}
       style={{
         width: `${baseWidth}px`,
@@ -172,7 +178,6 @@ export default function Carousel({
         {...dragProps}
         style={{
           width: itemWidth,
-          
           gap: `${GAP}px`,
           perspective: 1000,
           perspectiveOrigin: `${currentIndex * trackItemOffset + itemWidth / 2}px 50%`,
@@ -188,8 +193,8 @@ export default function Carousel({
             key={index}
             className={`relative shrink-0 flex flex-col ${
               round
-                ? "items-center justify-center text-center bg-[#060010] border-0"
-                : "items-start justify-between bg-[#222] border border-[#222] rounded-[12px]"
+                ? "items-center justify-center text-center bg-yellow-400 border-0"
+                : "items-start justify-between bg-yellow-400 border border-[#222] rounded-[12px]"
             } overflow-hidden cursor-grab active:cursor-grabbing`}
             style={{
               width: itemWidth,
@@ -199,20 +204,45 @@ export default function Carousel({
             }}
             transition={effectiveTransition}
           >
-          <div className="w-full h-28 rounded-t-[12px] overflow-hidden">
-            <img
+            {/* Gambar dengan efek gelap & zoom-out on hover */}
+          <motion.div
+            className="w-full h-28 rounded-t-[12px] overflow-hidden relative group"
+            style={{ background: item.bgColor || "#000" }} // fallback hitam
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <motion.img
               src={item.image}
               alt={item.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
+              initial={false}
+              animate={
+                hoveredIndex === index
+                  ? { scale: item.scaleAfter || 1, filter: `brightness(${item.brightnessAfter || 1})` }
+                  : { scale: item.scaleBefore || 1, filter: `brightness(${item.brightnessBefore || 0.9})` }
+              }
+              transition={{ duration: 0.35, ease: "easeOut" }}
               loading="lazy"
             />
-          </div>
-          {/* Text */}
-          <div className="p-5">
-            <div className="mb-1 font-black text-lg text-white">{item.title}</div>
-            <p className="text-sm text-white">{item.description}</p>
-          </div>
-        </motion.div>
+            {/* Optional overlay */}
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              initial={false}
+              animate={
+                hoveredIndex === index
+                  ? { opacity: 0 }
+                  : { opacity: 0.4 }
+              }
+              style={{ background: "black" }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            />
+          </motion.div>
+            {/* Text */}
+            <div className="p-5 flex-1 flex flex-col justify-center">
+              <div className="mb-1 text-lg text-black">{item.title}</div>
+              <p className="text-sm text-black">{item.description}</p>
+            </div>
+          </motion.div>
         ))}
       </motion.div>
       <div

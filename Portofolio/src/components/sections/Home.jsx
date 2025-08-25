@@ -87,18 +87,11 @@ export default function Home() {
   return (
     <>
       {/* Section Home */}
-      <nav className="flex top-0 justify-between items-center z-50 px-36 py-5">
+      <nav className="flex top-0 justify-between items-center z-50 px-20 py-5">
         <div className="flex items-center text-white">
           {/* Star logo kecil di navbar */}
-          <svg width="32" height="32" viewBox="0 0 200 200">
-            <polyline
-              points="100,20 123,82 190,82 136,125 155,190 100,150 45,190 64,125 10,82 77,82 100,20"
-              stroke="#FFD700"
-              strokeWidth="8"
-              fill="none"
-            />
-          </svg>
-          <span className="ml-6">LEONARD</span>
+          <img className="w-8 ml-4" src="./src/assets/navbar/pp.png"/>
+          <span className="ml-2">LEONARD</span>
         </div>
         <div className="flex gap-14">
           <button
@@ -146,7 +139,7 @@ export default function Home() {
       >
         {/* Star SVG animasi (GSAP) menggantikan avatar dan background */}
         <motion.div
-          className="relative flex items-center justify-center w-full"
+          className="relative flex items-center justify-center w-full pb-10 pt-14"
           style={{
             minHeight: "unset",
             marginBottom: 4,

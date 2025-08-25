@@ -10,22 +10,22 @@ export default function Organization() {
 
   const items = [
     {
-      img: "src/assets/new_arc.jpg",
-      title: "Hi,",
-      subtitle: "Selamat datang di organisasi kami!",
-      desc: "Kami bergerak di bidang pengembangan teknologi dan inovasi. Bergabunglah untuk berkolaborasi dan tumbuh bersama."
+      img: "src/assets/organization/hmif.png",
+      title: "HMIF ITB",
+      subtitle: "Himpunan Mahasiswa Informatika ITB",
+      desc: "Member of HMIF ITB, community for ITB Informatics students",
     },
     {
-      img: "src/assets/new_arc.jpg",
-      title: "Hello!",
-      subtitle: "Tim Kreatif & Kolaboratif",
-      desc: "Kami selalu berinovasi demi kemajuan bersama. Bergabung dan jadi bagian dari perubahan positif."
+      img: "src/assets/organization/uro.png",
+      title: "URO ITB",
+      subtitle: "Unit Robotika ITB",
+      desc: "Programmer Division in Viva La Ganesha (KRSRI) Robotic Team, focusing on learning and researching in SAR (Search and Rescue) Robotics"
     },
     {
-      img: "src/assets/new_arc.jpg",
-      title: "Welcome!",
-      subtitle: "Komunitas Terbuka",
-      desc: "Jadilah bagian dari komunitas yang mendukung pengembangan diri dan profesionalisme."
+      img: "src/assets/organization/arc.png",
+      title: "ARC ITB",
+      subtitle: "Amateur Radio Club ITB",
+      desc: "Member in Amateur Radio Club ITB, focusing on learning and practicing software engineering"
     }
   ];
 
@@ -46,7 +46,7 @@ export default function Organization() {
     tl.from(headerRef.current, {
       x: -80,
       opacity: 0,
-      duration: 0.7,
+      duration: 0.3,
       ease: "power3.out",
     })
     .to(
@@ -77,8 +77,8 @@ export default function Organization() {
       className="flex flex-col -mt-64 items-center gap-14 min-h-[60vh] mb-12"
     >
       <div ref={headerRef}>
-        <h1 className="text-5xl font-bold text-center mb-4">Organizations</h1>
-        <p className="text-center mb-4" >my organization lol</p>
+        <h1 className="text-5xl font-semibold text-center mb-4">Organizations</h1>
+        <p className="text-center mb-4" >Currently, I am actively involved in these organization.</p>
       </div>
       {items.map((item, idx) => (
         <div
@@ -90,10 +90,11 @@ export default function Organization() {
             px-12 py-8
             rounded-3xl
             transition-all duration-300
-            bg-gradient-to-r from-[#d1d5db] via-[#FFD700]/20 to-white
+            bg-[#FFD700]
+            
             shadow-md
             hover:scale-105 hover:shadow-2xl
-            border-2 border-[#FFD700]
+            border border-black
           "
           style={{
             boxShadow: '0 4px 24px 0 rgba(32,32,32,0.18)',
@@ -101,7 +102,7 @@ export default function Organization() {
         >
           {/* Image Section */}
           <div className="flex-shrink-0 mr-10">
-            <div className="w-56 h-40 rounded-2xl overflow-hidden bg-gray-300 border-4 border-[#FFD700] flex items-center justify-center">
+            <div className="w-40 h-40 rounded-2xl overflow-hidden bg-gray-300 border border-black flex items-center justify-center">
               <img
                 src={item.img}
                 alt={item.title}
@@ -111,9 +112,9 @@ export default function Organization() {
           </div>
           {/* Text Section */}
           <div className="flex flex-col flex-1 text-black">
-            <h2 className="text-3xl font-bold mb-2 text-[#222]">{item.title}</h2>
-            <p className="text-lg font-medium mb-1 text-[#FFD700]">{item.subtitle}</p>
-            <p className="text-base text-[#222]">{item.desc}</p>
+            <h2 className="text-3xl font-semibold mb-2 text-black">{item.title}</h2>
+            <p className="text-lg font-medium mb-1 text-black">{item.subtitle}</p>
+            <p className="text-base text-black">{item.desc}</p>
           </div>
         </div>
       ))}

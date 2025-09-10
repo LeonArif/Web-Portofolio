@@ -57,7 +57,7 @@ function App() {
           inset: 0,
           width: '100vw',
           height: '100vh',
-          background: `url("src/assets/bg.svg") no-repeat center/cover`,
+          background: `url("/images/bg.svg") no-repeat center/cover`,
           opacity: showSVG ? 1 : 0,
           transition: `opacity ${transitionDuration} cubic-bezier(.4,0,.2,1)`,
           zIndex: 1,

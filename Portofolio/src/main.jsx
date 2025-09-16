@@ -13,6 +13,7 @@ function App() {
   const [showSVG, setShowSVG] = useState(false)
   const [transitionDuration, setTransitionDuration] = useState('0.7s')
   const lastScrollY = useRef(window.scrollY)
+  const [forceReveal, setForceReveal] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,13 +26,27 @@ function App() {
       lastScrollY.current = currentScrollY
 
       // Atur durasi transisi berdasarkan arah scroll
-      if (isScrollingUp) {
-        setTransitionDuration('0.2s')
-      } else {
-        setTransitionDuration('0.7s')
-      }
+      setTransitionDuration(isScrollingUp ? '0.2s' : '0.7s')
 
       setShowSVG(homeBottom < 100)
+
+      // Deteksi level zoom
+      const zoomLevel = window.devicePixelRatio
+
+      // Hitung persentase scroll
+      const scrollPercent = (window.innerHeight + window.scrollY) / document.body.offsetHeight
+
+      // Reveal semua section kalau:
+      // - Zoom out 50% atau kurang dan scroll sudah lewat 90%
+      // - Normal, scroll sudah 98% (toleransi 2px)
+      if (
+        (zoomLevel <= 0.5 && scrollPercent >= 0.5) ||
+        (zoomLevel > 0.5 && window.innerHeight + window.scrollY >= document.body.offsetHeight - 2)
+      ) {
+        setForceReveal(true)
+      } else {
+        setForceReveal(false)
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -39,10 +54,13 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Combine showSVG with forceReveal
+  const revealSections = showSVG || forceReveal
+
   return (
     <div
       style={{
-        background: showSVG ? '#fff' : '#000',
+        background: revealSections ? '#fff' : '#000',
         minHeight: '100vh',
         transition: 'background 0.5s',
         position: 'relative',
@@ -58,7 +76,7 @@ function App() {
           width: '100vw',
           height: '100vh',
           background: `url("/images/bg.svg") no-repeat center/cover`,
-          opacity: showSVG ? 1 : 0,
+          opacity: revealSections ? 1 : 0,
           transition: `opacity ${transitionDuration} cubic-bezier(.4,0,.2,1)`,
           zIndex: 1,
         }}
@@ -70,10 +88,10 @@ function App() {
           <About />
         </div>
         <div style={{ position: 'relative', zIndex: 2 }}>
-          <Experience visible={showSVG} />
-          <Organization visible={showSVG}/>
-          <Projects visible={showSVG}/>
-          <Contacts visible={showSVG}/>
+          <Experience visible={revealSections} />
+          <Organization visible={revealSections}/>
+          <Projects visible={revealSections}/>
+          <Contacts/>
         </div>
       </StrictMode>
     </div>

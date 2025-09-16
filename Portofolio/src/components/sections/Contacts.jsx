@@ -7,7 +7,6 @@ export default function Contacts() {
         <div id="contacts" className="bg-yellow-400 border border-black flex items-center justify-center text-black flex-col gap-2 p-14 mt-32" 
             style={{
             boxShadow: "0px -32px 64px 0px rgba(0,0,0,0.12)",
-            borderRadius: "0 0 48px 48px"
         }}>
             <h1 className="font-semiold text-3xl pb-8">Contacts</h1>
             <div className="w-full max-w-4xl grid grid-cols-2 grid-rows-2 gap-6">

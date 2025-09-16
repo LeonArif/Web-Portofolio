@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Organization() {
+export default function Organization({ visible }) {
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
 
@@ -75,6 +75,9 @@ export default function Organization() {
     <div
       ref={sectionRef}
       className="flex flex-col -mt-64 items-center gap-14 min-h-[60vh] mb-12"
+      style={{
+        display: visible ? "flex" : "none"
+      }}
     >
       <div ref={headerRef}>
         <h1 className="text-5xl font-semibold text-center mb-4">Organizations</h1>

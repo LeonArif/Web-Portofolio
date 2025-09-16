@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Projects() {
+export default function Projects({ visible }) {
   const sectionRef = useRef(null);
   const titleDescRef = useRef(null);
   const popupRef = useRef(null);
@@ -134,79 +134,82 @@ export default function Projects() {
   return (
     <div
       id="projects"
-      className="scroll-mt-24 min-h-[60vh] w-full pb-28"
+      className="scroll-mt-24 min-h-[60vh] w-full pb-28 flex flex-col"
       ref={sectionRef}
+      style={{
+        display: visible ? "flex" : "none"
+      }}
     >
-      <div ref={titleDescRef}>
-        <h1 className="text-5xl font-semibold text-center mb-4">Projects</h1>
-        <p className="text-center mb-14 text-lg">
-          Take a look at some of the projects I've built and contributed to.
-        </p>
-      </div>
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          {projects.map((project, idx) => (
-            <div
-              key={idx}
-              className="project-card flex flex-col border border-black bg-[#FFD700] rounded-2xl shadow-xl h-[400px] p-6 transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer"
-              onClick={() => handleCardClick(project, idx)}
-            >
-              <div className="w-full h-40 rounded-xl overflow-hidden bg-white flex border border-black items-center justify-center mb-3">
-                <img src={project.img} alt={project.title} className="w-full h-full object-cover" />
+        <div ref={titleDescRef}>
+          <h1 className="text-5xl font-semibold text-center mb-4">Projects</h1>
+          <p className="text-center mb-14 text-lg">
+            Take a look at some of the projects I've built and contributed to.
+          </p>
+        </div>
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+            {projects.map((project, idx) => (
+              <div
+                key={idx}
+                className="project-card flex flex-col border border-black bg-[#FFD700] rounded-2xl shadow-xl h-[400px] p-6 transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer"
+                onClick={() => handleCardClick(project, idx)}
+              >
+                <div className="w-full h-40 rounded-xl overflow-hidden bg-white flex border border-black items-center justify-center mb-3">
+                  <img src={project.img} alt={project.title} className="w-full h-full object-cover" />
+                </div>
+                <h2 className="text-2xl font-semibold text-black mb-1">{project.title}</h2>
+                <p className="text-black text-base mb-2">{project.desc}</p>
+                {/* Tools badges */}
+                <div className="flex flex-col mt-auto">
+                  <p className="text-black text-base mb-4 font-semibold italic"> Click for more description...</p>
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {project.tools && project.tools.map((tool, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="inline-block px-3 py-1 rounded-lg bg-white/80 text-black text-xs font-semibold"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <h2 className="text-2xl font-semibold text-black mb-1">{project.title}</h2>
-              <p className="text-black text-base mb-2">{project.desc}</p>
-              {/* Tools badges */}
-              <div className="flex flex-col mt-auto">
-                <p className="text-black text-base mb-4 font-semibold italic"> Click for more description...</p>
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tools && project.tools.map((tool, tIdx) => (
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Modal Popup */}
+        {openProject && (
+          <div
+            id="project-modal-backdrop"
+            onClick={onBackdropClick}
+            className="fixed inset-0 z-50 bg-black bg-opacity-60 flex justify-center items-center"
+          >
+            <div
+              ref={popupRef}
+              className="relative bg-yellow-400 border-2 border-black rounded-2xl shadow-2xl w-full max-w-xl p-6 flex flex-col h-[700px]"
+              style={{ opacity: 0 }}
+            >
+              <div className="w-full h-72 rounded-xl overflow-hidden border-2 border-black bg-gray-200 flex items-center justify-center mb-2">
+                <img src={openProject.img} alt={openProject.title} className="w-full h-full object-cover" />
+              </div>
+              <h2 className="text-2xl font-semibold text-black">{openProject.title}</h2>
+              <p className="mt-10 text-black">{openProject.detail}</p>
+              {/* Spacer agar badge di bawah */}
+              <div className="flex-grow"></div>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {openProject.tools && openProject.tools.map((tool, idx) => (
                   <span
-                    key={tIdx}
-                    className="inline-block px-3 py-1 rounded-lg bg-white/80 text-black text-xs font-semibold"
+                    key={idx}
+                    className="inline-block px-3 py-1 rounded-lg bg-white/80 text-black text-xs font-semisemibold"
                   >
                     {tool}
                   </span>
                 ))}
               </div>
             </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Modal Popup */}
-      {openProject && (
-        <div
-          id="project-modal-backdrop"
-          onClick={onBackdropClick}
-          className="fixed inset-0 z-50 bg-black bg-opacity-60 flex justify-center items-center"
-        >
-          <div
-            ref={popupRef}
-            className="relative bg-yellow-400 border-2 border-black rounded-2xl shadow-2xl w-full max-w-xl p-6 flex flex-col h-[700px]"
-            style={{ opacity: 0 }}
-          >
-            <div className="w-full h-72 rounded-xl overflow-hidden border-2 border-black bg-gray-200 flex items-center justify-center mb-2">
-              <img src={openProject.img} alt={openProject.title} className="w-full h-full object-cover" />
-            </div>
-            <h2 className="text-2xl font-semibold text-black">{openProject.title}</h2>
-            <p className="mt-10 text-black">{openProject.detail}</p>
-            {/* Spacer agar badge di bawah */}
-            <div className="flex-grow"></div>
-            <div className="flex flex-wrap gap-2 mt-4">
-              {openProject.tools && openProject.tools.map((tool, idx) => (
-                <span
-                  key={idx}
-                  className="inline-block px-3 py-1 rounded-lg bg-white/80 text-black text-xs font-semisemibold"
-                >
-                  {tool}
-                </span>
-              ))}
-            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
   );
 }

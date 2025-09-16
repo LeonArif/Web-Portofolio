@@ -71,9 +71,9 @@ function App() {
         </div>
         <div style={{ position: 'relative', zIndex: 2 }}>
           <Experience visible={showSVG} />
-          <Organization />
-          <Projects />
-          <Contacts />
+          <Organization visible={showSVG}/>
+          <Projects visible={showSVG}/>
+          <Contacts visible={showSVG}/>
         </div>
       </StrictMode>
     </div>

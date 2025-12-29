@@ -95,11 +95,15 @@ export default function About({ avatarRef: parentAvatarRef }) {
   }, []);
 
   return (
-    <div id="about" className="scroll-mt-24" ref={aboutSectionRef}>
+    <div id="about" className="py-20" ref={aboutSectionRef}>
       <div>
-        <h1 ref={titleRef} className="text-5xl text-center text-white">About Me</h1>
+        <h1 ref={titleRef} className="text-5xl text-center font-semibold text-white">About Me</h1>
       </div>
-      <div className="flex flex-col lg:flex-row items-center py-32 lg:px-32 justify-between">
+      <div className="flex flex-col lg:flex-row items-center py-32 lg:px-32 justify-between relative
+        after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 
+        after:w-[90%] after:h-[2px]
+        after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent"
+>
         {/* Avatar */}
         <div className="flex-shrink-0 pl-24">
           <div
@@ -144,8 +148,8 @@ export default function About({ avatarRef: parentAvatarRef }) {
               className="w-full h-full"
               aspectRatio="100%"
               style={{
-                width: 360,
-                height: 360,
+                width: 400,
+                height: 400,
                 borderRadius: "50%",
                 overflow: "hidden"
               }}
@@ -156,7 +160,7 @@ export default function About({ avatarRef: parentAvatarRef }) {
         </div>
         {/* Kolom Tulisan */}
         <div className="flex-1 flex flex-col justify-center max-w-2xl text-white">
-          <h1 ref={helloRef} className="text-5xl font-bold mb-3">Hello!</h1>
+          <h1 ref={helloRef} className="text-5xl mb-3">Hello!</h1>
           <h2 ref={nameRef} className="text-2xl mb-8">I'm Leonard</h2>
           <p ref={descRef}>
             I am a System Information undergraduate specializing in full-stack web development, with skills in front-end, back-end, WordPress, and UI/UX design. I enjoy building digital products, learning new technologies, and collaborating to solve real-world problems. Currently, I’m interested in software engineering, data, and cybersecurity. Welcome to my portfolio!
@@ -173,17 +177,6 @@ export default function About({ avatarRef: parentAvatarRef }) {
             </a>
           </div>
         </div>
-      </div>
-      {/* Garis bawah dengan efek fading */}
-      <div className="w-full flex justify-center mt-5 mb-20">
-        <div
-          style={{
-            height: '2px',
-            width: '80%',
-            borderRadius: '4px',
-            background: 'linear-gradient(90deg, rgba(255,180,0,0) 0%, #FFD700 20%, #222 50%, #FFD700 80%, rgba(255,215,0,0) 100%)',
-          }}
-        />
       </div>
     </div>
   );

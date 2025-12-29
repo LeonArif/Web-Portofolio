@@ -90,7 +90,7 @@ export default function Home() {
       <nav className="flex top-0 justify-between items-center z-50 px-20 py-5">
         <div className="flex items-center text-white">
           {/* Star logo kecil di navbar */}
-          <img className="w-8 ml-4" src="/images/navbar/pp.png"/>
+          <img className="w-6 h-6 ml-4 mt-1" src="/images/navbar/pp.png"/>
           <span className="ml-2">LEONARD</span>
         </div>
         <div className="flex gap-14">
@@ -135,7 +135,19 @@ export default function Home() {
       {/* Section Home */}
       <section
         id="home"
-        className="scroll-mt-24 flex flex-col items-center justify-center min-h-[80vh] pb-20 text-white px-6"
+        className="
+        scroll-mt-24 
+        flex 
+        flex-col 
+        items-center 
+        justify-center 
+        min-h-[80vh] 
+        pb-20
+      text-white 
+        px-6
+        relative
+        after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px]
+        after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent"
       >
         {/* Star SVG animasi (GSAP) menggantikan avatar dan background */}
         <motion.div
@@ -155,7 +167,7 @@ export default function Home() {
               zIndex: 2,
               background: 'rgba(20,20,30,0.3)',
               borderRadius: '50%',
-              boxShadow: '0 4px 32px 0 #FFD70050',
+              boxShadow: '0 4px 32px 0 #7C9CBF',
               padding: "14px",
               maxWidth: "100%",
               marginBottom: "8px",
@@ -169,7 +181,7 @@ export default function Home() {
               r="90"
               fill="rgba(20,20,30,0.9)"
               style={{
-                filter: "drop-shadow(0 0 32px #FFD700)",
+                filter: "drop-shadow(0 0 32px #FFFF)",
                 transition: "box-shadow 0.3s",
               }}
             />
@@ -177,11 +189,11 @@ export default function Home() {
             <polyline
               ref={starRef}
               points="98.5,10 122,78 180,78 130,120 148,170 100,140 52,170 70,120 20,78 78,78 100,10"
-              stroke="#FFD700"
+              stroke="#FFFF"
               strokeWidth="8"
               fill="none"
               style={{
-                filter: "drop-shadow(0 0 10px #FFD700)",
+                filter: "drop-shadow(0 0 10px #7C9CBF)",
               }}
             />
           </svg>
@@ -227,17 +239,6 @@ export default function Home() {
         </motion.p>
         {/* Social icons */}
       </section>
-      {/* Bottom gradient line */}
-      <div className="w-full flex justify-center mt-5 mb-20">
-        <div
-          style={{
-            height: '2px',
-            width: '80%',
-            borderRadius: '4px',
-            background: 'linear-gradient(90deg, rgba(255,180,0,0) 0%, #FFD700 20%, #222 50%, #FFD700 80%, rgba(255,215,0,0) 100%)',
-          }}
-        />
-      </div>
     </>
   );
 }

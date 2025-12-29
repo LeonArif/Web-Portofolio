@@ -1,0 +1,116 @@
+/* Rotating Gradient Border Effect - Reusable */
+@keyframes rotate-gradient {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gradient-border-hover {
+  /* Wrapper untuk efek border */
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;        /* biar ring rapih di tepi */
+  isolation: isolate;      /* kontrol z-index pseudo-element */
+  
+  /* Variabel ketebalan border dan glow */
+  --gb-border: 2px;        /* ketebalan border gradient */
+  --gb-glow: 8px;          /* blur glow di luar */
+}
+
+/* Pseudo-elements default state */
+.gradient-border-hover::before,
+.gradient-border-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ::before = border gradient tajam (pakai mask supaya cuma tepi yang kelihatan) */
+.gradient-border-hover::before {
+  background: conic-gradient(
+    from 0deg,
+    #ffe29f,
+    #ffaec9,
+    #b5b9ff,
+    #baffc9,
+    #a0e7e5,
+    #ffe29f
+  );
+  padding: var(--gb-border);
+  /* Mask untuk bikin ring (hanya border) */
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+          mask-composite: exclude;
+
+  animation: rotate-gradient 3s linear infinite;
+  animation-play-state: paused;
+}
+
+/* ::after = glow/“aura” halus di luar border (opsional, bisa dimatikan kalau tidak mau glow) */
+.gradient-border-hover::after {
+  background: conic-gradient(
+    from 0deg,
+    #ffe29f,
+    #ffaec9,
+    #b5b9ff,
+    #baffc9,
+    #a0e7e5,
+    #ffe29f
+  );
+  padding: var(--gb-border);
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+          mask-composite: exclude;
+
+  filter: blur(var(--gb-glow));
+  transform: scale(1.02);  /* sedikit lebih besar biar aura keluar */
+  animation: rotate-gradient 3s linear infinite;
+  animation-play-state: paused;
+}
+
+/* Hover state: tampilkan border + jalankan animasi */
+.gradient-border-hover:hover::before,
+.gradient-border-hover:hover::after {
+  opacity: 1;
+}
+.gradient-border-hover:hover::before,
+.gradient-border-hover:hover::after {
+  animation-play-state: running;
+}
+
+/* Pastikan konten di atas pseudo-elements */
+.gradient-border-hover > * {
+  position: relative;
+  z-index: 1;
+  /* Disarankan background solid di konten agar kontras, contoh: */
+  /* background: #111827; */
+}
+
+/* Variants untuk rounding yang konsisten */
+.gradient-border-hover.rounded-2xl::before,
+.gradient-border-hover.rounded-2xl::after {
+  border-radius: 1rem;
+}
+.gradient-border-hover.rounded-3xl::before,
+.gradient-border-hover.rounded-3xl::after {
+  border-radius: 1.5rem;
+}
+.gradient-border-hover.rounded-full::before,
+.gradient-border-hover.rounded-full::after {
+  border-radius: 9999px;
+}

@@ -5,9 +5,9 @@ import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap. registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-export default function About({ avatarRef: parentAvatarRef }) {
+export default function About({ avatarRef:  parentAvatarRef }) {
   const aboutSectionRef = useRef(null);
   const titleRef = useRef(null);
   const avatarAnimRef = useRef(null);
@@ -20,13 +20,13 @@ export default function About({ avatarRef: parentAvatarRef }) {
 
   useEffect(() => {
     if (
-      !aboutSectionRef.current ||
+      ! aboutSectionRef.current ||
       !titleRef.current ||
-      !avatarAnimRef. current ||
-      !helloRef.current ||
-      !nameRef.current ||
-      !descRef.current ||
-      !socialRef.current
+      !avatarAnimRef.current ||
+      !helloRef. current ||
+      !nameRef. current ||
+      !descRef. current ||
+      !socialRef. current
     ) {
       return;
     }
@@ -36,13 +36,13 @@ export default function About({ avatarRef: parentAvatarRef }) {
       avatarAnimRef.current,
       helloRef.current,
       nameRef.current,
-      descRef. current,
-      socialRef.current,
+      descRef.current,
+      socialRef. current,
     ], { clearProps: 'all' });
 
-    const t1 = gsap. timeline({
+    const t1 = gsap.timeline({
       scrollTrigger: {
-        trigger: aboutSectionRef.current,
+        trigger: aboutSectionRef. current,
         start: "top 70%",
         toggleActions: "play none none none",
       }
@@ -50,11 +50,11 @@ export default function About({ avatarRef: parentAvatarRef }) {
 
     t1.from(titleRef.current, {
       y: 80,
-      opacity:  0,
+      opacity: 0,
       duration: 0.5,
       ease: "power2.out"
     })
-    .from(avatarAnimRef.current, {
+    .from(avatarAnimRef. current, {
       x: -80,
       opacity: 0,
       duration:  0.5,
@@ -67,9 +67,9 @@ export default function About({ avatarRef: parentAvatarRef }) {
       duration: 0.2,
       ease: "power2.out"
     })
-    .from(nameRef. current, {
+    .from(nameRef.current, {
       x: 100,
-      opacity: 0,
+      opacity:  0,
       duration: 0.2,
       ease: "power2.out"
     })
@@ -79,7 +79,7 @@ export default function About({ avatarRef: parentAvatarRef }) {
       duration: 0.2,
       ease: "power2.out"
     })
-    .from(socialRef.current, {
+    .from(socialRef. current, {
       x: 100,
       opacity: 0,
       duration: 0.2,
@@ -97,11 +97,9 @@ export default function About({ avatarRef: parentAvatarRef }) {
       <div className="mb-8 md:mb-0">
         <h1 ref={titleRef} className="text-3xl md:text-5xl text-center font-semibold text-white">About Me</h1>
       </div>
-      <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0 py-16 md:py-32 px-4 md:px-8 lg:px-32 justify-between relative
-        after:content-[''] after:absolute after: bottom-0 after:left-1/2 after:-translate-x-1/2 
-        after:w-[90%] after:h-[2px]
-        after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent"
-      >
+      
+      {/* Container content tanpa border */}
+      <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0 py-16 md:py-32 px-4 md:px-8 lg:px-32 justify-between">
         {/* Avatar */}
         <div className="flex-shrink-0 lg:pl-24">
           <div
@@ -142,12 +140,12 @@ export default function About({ avatarRef: parentAvatarRef }) {
 
         {/* Kolom Tulisan */}
         <div className="flex-1 flex flex-col justify-center max-w-2xl text-white px-4 md:px-0">
-          <h1 ref={helloRef} className="text-4xl md:text-5xl mb-3">Hello!</h1>
+          <h1 ref={helloRef} className="text-4xl md:text-5xl mb-3">Hello! </h1>
           <h2 ref={nameRef} className="text-xl md:text-2xl mb-6 md:mb-8">I'm Leonard</h2>
-          <p ref={descRef} className="text-sm md:text-base leading-relaxed text-gray-300 mb-6 md:mb-0">
-            I am a System Information undergraduate specializing in full-stack web development, with skills in front-end, back-end, WordPress, and UI/UX design. I enjoy building digital products, learning new technologies, and collaborating to solve real-world problems. Currently, I'm interested in software engineering, data, and cybersecurity. Welcome to my portfolio! 
+          <p ref={descRef} className="text-sm md:text-base leading-relaxed text-gray-300 mb-6 md:mb-8">
+            I am a System Information undergraduate specializing in full-stack web development, with skills in front-end, back-end, WordPress, and UI/UX design. I enjoy building digital products, learning new technologies, and collaborating to solve real-world problems.  Currently, I'm interested in software engineering, data, and cybersecurity.  Welcome to my portfolio!
           </p>
-          <div ref={socialRef} className="flex gap-8 md:gap-20 mt-6 md:mt-8">
+          <div ref={socialRef} className="flex gap-8 md:gap-20">
             <a href="https://github.com/LeonArif" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
               <FontAwesomeIcon icon={faGithub} className="text-2xl md:text-3xl" />
             </a>
@@ -159,6 +157,11 @@ export default function About({ avatarRef: parentAvatarRef }) {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Border bawah di luar content, setelah social icons */}
+      <div className="flex justify-center mt-8 md:mt-16">
+        <div className="w-[90%] h-[2px] bg-gradient-to-r from-transparent via-white to-transparent"></div>
       </div>
     </div>
   );

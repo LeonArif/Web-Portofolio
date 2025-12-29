@@ -98,7 +98,7 @@ export default function Home() {
           <img className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" src="/images/navbar/pp.png" alt="logo"/>
           <span className="ml-1 sm:ml-2 text-[10px] sm:text-xs md:text-sm lg:text-base font-semibold">LEONARD</span>
         </div>
-        <div className="flex gap-1. 5 sm:gap-3 md:gap-6 lg:gap-10 justify-end items-center">
+        <div className="flex gap-2 sm:gap-4 md:gap-6 lg:gap-10 justify-end items-center">
           <button
             className="px-0.5 sm:px-1 md:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
             onClick={() => {

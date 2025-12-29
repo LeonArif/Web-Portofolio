@@ -16,7 +16,7 @@ export default function Home() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const ball = ballRef.current;
+    const ball = ballRef. current;
     const star = starRef.current;
     const hi = hiRef.current;
     const type = typeRef.current;
@@ -29,13 +29,13 @@ export default function Home() {
     star.style. strokeDashoffset = starLength;
 
     // Set initial states
-    gsap.set(ball, { x: 400, opacity: 1 });
+    gsap.set(ball, { x: 400, opacity:  1 });
     gsap.set(star, { opacity: 0 });
     gsap.set([hi, type, desc], { x: -200, opacity: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: sectionRef.current,
+        trigger: sectionRef. current,
         start: "top 80%",
         toggleActions: "play none none none",
       }
@@ -50,7 +50,7 @@ export default function Home() {
     
     // Bintang muncul
     tl.to(star, {
-      opacity:  1,
+      opacity: 1,
       duration: 0.1,
       ease: "none"
     });
@@ -58,20 +58,20 @@ export default function Home() {
     // Bintang tergambar
     tl.to(star, {
       strokeDashoffset: 0,
-      duration: 1,
+      duration:  1,
       ease: "power1.inOut"
     }, "-=0.1");
     
     // Text masuk dari kiri satu per satu
     tl.to(hi, {
-      x:  0,
+      x: 0,
       opacity: 1,
-      duration:  0.5,
+      duration: 0.5,
       ease: "power2.out"
     }, "+=0.2");
     
     tl.to(type, {
-      x:  0,
+      x: 0,
       opacity: 1,
       duration: 0.5,
       ease: "power2.out"
@@ -79,7 +79,7 @@ export default function Home() {
     
     tl.to(desc, {
       x: 0,
-      opacity: 1,
+      opacity:  1,
       duration: 0.5,
       ease: "power2.out"
     }, "-=0.4");
@@ -93,23 +93,23 @@ export default function Home() {
   return (
     <>
       {/* Navbar responsive */}
-      <nav className="flex top-0 justify-between items-center z-50 px-4 sm:px-6 md:px-10 lg:px-20 py-4">
+      <nav className="flex top-0 justify-between items-center z-50 px-2 sm:px-4 md:px-10 lg:px-20 py-3 sm:py-4">
         <div className="flex items-center text-white">
-          <img className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-4 mt-1" src="/images/navbar/pp.png" alt="logo"/>
-          <span className="ml-2 text-xs sm:text-sm md:text-base font-semibold">LEONARD</span>
+          <img className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" src="/images/navbar/pp.png" alt="logo"/>
+          <span className="ml-1 sm:ml-2 text-[10px] sm:text-xs md:text-sm lg:text-base font-semibold">LEONARD</span>
         </div>
-        <div className="flex gap-2 sm:gap-4 md:gap-6 lg:gap-10 justify-end">
+        <div className="flex gap-1. 5 sm:gap-3 md:gap-6 lg:gap-10 justify-end items-center">
           <button
-            className="px-1 sm:px-2 py-1 text-[10px] sm:text-xs md:text-sm lg: text-base rounded text-white underline-animate whitespace-nowrap"
+            className="px-0.5 sm:px-1 md:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
             onClick={() => {
-              const el = document.getElementById('about');
+              const el = document. getElementById('about');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            ABOUT ME
+            ABOUT
           </button>
           <button
-            className="px-1 sm:px-2 py-1 text-[10px] sm:text-xs md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
+            className="px-0.5 sm:px-1 md:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
             onClick={() => {
               const el = document.getElementById('experience');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -118,7 +118,7 @@ export default function Home() {
             EXPERIENCE
           </button>
           <button
-            className="px-1 sm:px-2 py-1 text-[10px] sm:text-xs md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
+            className="px-0.5 sm:px-1 md:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
             onClick={() => {
               const el = document.getElementById('projects');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -127,7 +127,7 @@ export default function Home() {
             PROJECTS
           </button>
           <button
-            className="px-1 sm:px-2 py-1 text-[10px] sm:text-xs md:text-sm lg: text-base rounded text-white underline-animate whitespace-nowrap"
+            className="px-0.5 sm:px-1 md:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
             onClick={() => {
               const el = document.getElementById('contacts');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -203,7 +203,7 @@ export default function Home() {
         </motion.div>
 
         {/* Heading */}
-        <motion.h1
+        <motion. h1
           ref={hiRef}
           className="text-3xl md:text-5xl mb-5 text-center font-bold px-2"
         >

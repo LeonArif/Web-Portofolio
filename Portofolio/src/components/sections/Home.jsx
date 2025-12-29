@@ -234,7 +234,7 @@ export default function Home() {
         {/* Description */}
         <motion.p
           ref={descRef}
-          className="max-w-2xl text-sm md:text-lg text-center mb-10 md:mb-12 px-4 text-gray-300"
+          className="max-w-2xl text-sm md:text-lg text-center mb-14 md:mb-16 px-4 text-gray-300"
         >
           Every project begins with a single wish—let's fulfill yours!
         </motion.p>

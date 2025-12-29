@@ -27,31 +27,23 @@ export default function Home() {
     star.style.strokeDasharray = starLength;
     star.style.strokeDashoffset = starLength;
 
-    // Bola: posisi awal di kanan (x: 400px), visible
     gsap.set(ball, { x: 400, opacity: 1 });
-    // Bintang: disembunyikan dulu
     gsap.set(star, { opacity: 0 });
-    // Teks: posisi awal di kiri + transparan
-    gsap.set([hi, type, desc ], { x: -200, opacity: 0 });
+    gsap.set([hi, type, desc], { x: -200, opacity: 0 });
 
-    // Timeline animasi: bola gelinding ke tengah, bintang, lalu teks2 masuk dari kiri
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ball,
         start: "top 80%",
         toggleActions: "play none none none",
-        // markers: true, // aktifkan untuk debug
       }
     });
 
-    // Step 1: Bola gelinding ke tengah
     tl.to(ball, {
       x: 0,
       duration: 1.2,
       ease: "power2.inOut"
     });
-
-    // Step 2: Bintang muncul dan tergambar
     tl.to(star, {
       opacity: 1,
       duration: 0.1,
@@ -61,9 +53,7 @@ export default function Home() {
       strokeDashoffset: 0,
       duration: 1,
       ease: "power1.inOut"
-    }, "-=0.1"); // mulai hampir bersamaan dengan opacity
-
-    // Step 3: Teks-teks masuk dari kiri satu per satu
+    }, "-=0.1");
     tl.to(hi, {
       x: 0,
       opacity: 1,
@@ -86,14 +76,13 @@ export default function Home() {
 
   return (
     <>
-      {/* Section Home */}
-      <nav className="flex top-0 justify-between items-center z-50 px-20 py-5">
+      {/* Navbar responsive */}
+      <nav className="flex top-0 justify-between items-center z-50 px-4 sm:px-6 md:px-10 lg:px-20 py-4">
         <div className="flex items-center text-white">
-          {/* Star logo kecil di navbar */}
-          <img className="w-6 h-6 ml-4 mt-1" src="/images/navbar/pp.png"/>
-          <span className="ml-2">LEONARD</span>
+          <img className="w-6 h-6 ml-2 sm:ml-4 mt-1" src="/images/navbar/pp.png" alt="logo"/>
+          <span className="ml-2 text-sm sm:text-base">LEONARD</span>
         </div>
-        <div className="flex gap-14">
+        <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-10 lg:gap-14 justify-end">
           <button
             className="px-2 py-1 rounded text-white underline-animate"
             onClick={() => {
@@ -132,48 +121,48 @@ export default function Home() {
           </button>
         </div>
       </nav>
+
       {/* Section Home */}
       <section
         id="home"
         className="
-        scroll-mt-24 
-        flex 
-        flex-col 
-        items-center 
-        justify-center 
-        min-h-[80vh] 
-        pb-20
-      text-white 
-        px-6
-        relative
-        after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px]
-        after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent"
+          scroll-mt-24 
+          flex 
+          flex-col 
+          items-center 
+          justify-center 
+          min-h-[70vh] 
+          pb-16 md:pb-20
+          text-white 
+          px-4 sm:px-6 md:px-8
+          relative
+          after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px]
+          after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent"
       >
-        {/* Star SVG animasi (GSAP) menggantikan avatar dan background */}
+        {/* Star SVG */}
         <motion.div
-          className="relative flex items-center justify-center w-full pb-10 pt-14"
+          className="relative flex items-center justify-center w-full pb-8 pt-10"
           style={{
             minHeight: "unset",
             marginBottom: 4,
           }}
         >
           <svg
-            width="250"
-            height="250"
             viewBox="0 0 200 200"
             style={{
+              width: "clamp(160px, 30vw, 280px)",
+              height: "clamp(160px, 30vw, 280px)",
               display: 'block',
               margin: '0 auto',
               zIndex: 2,
               background: 'rgba(20,20,30,0.3)',
               borderRadius: '50%',
-              boxShadow: '0 4px 32px 0 #7C9CBF',
+              boxShadow: '0 4px 32px 0 #7C9CBF80',
               padding: "14px",
               maxWidth: "100%",
               marginBottom: "8px",
             }}
           >
-            {/* Bola hitam/transparan di belakang bintang */}
             <circle
               ref={ballRef}
               cx="100"
@@ -185,7 +174,6 @@ export default function Home() {
                 transition: "box-shadow 0.3s",
               }}
             />
-            {/* Polyline bintang */}
             <polyline
               ref={starRef}
               points="98.5,10 122,78 180,78 130,120 148,170 100,140 52,170 70,120 20,78 78,78 100,10"
@@ -198,31 +186,28 @@ export default function Home() {
             />
           </svg>
         </motion.div>
-        {/* Judul besar */}
+
+        {/* Heading */}
         <motion.h1
           ref={hiRef}
-          className="text-5xl md:text-5xl mb-5 text-center font-bold"
+          className="text-3xl md:text-5xl mb-5 text-center font-bold px-2"
         >
           Turning your ideas into reality!
         </motion.h1>
+
         {/* TypeAnimation */}
         <motion.p
           ref={typeRef}
-          className="text-xl md:text-2xl mb-4 text-center font-semibold"
+          className="text-base md:text-2xl mb-4 text-center font-semibold px-2"
         >
           Specializing in —{" "}
           <TypeAnimation
             sequence={[
-              "Front-end Website",
-              1500,
-              "Back-end Solutions",
-              1500,
-              "WordPress Sites",
-              1500,
-              "UI/UX Designs",
-              1500,
-              "All the projects you imagine!",
-              1500,
+              "Front-end Website", 1500,
+              "Back-end Solutions", 1500,
+              "WordPress Sites", 1500,
+              "UI/UX Designs", 1500,
+              "All the projects you imagine!", 1500,
             ]}
             wrapper="span"
             speed={50}
@@ -230,14 +215,14 @@ export default function Home() {
             repeat={Infinity}
           />
         </motion.p>
-        {/* Deskripsi */}
+
+        {/* Description */}
         <motion.p
           ref={descRef}
-          className="max-w-2xl text-base md:text-lg text-center mb-12"
+          className="max-w-2xl text-sm md:text-lg text-center mb-10 md:mb-12 px-4 text-gray-300"
         >
           Every project begins with a single wish—let’s fulfill yours!
         </motion.p>
-        {/* Social icons */}
       </section>
     </>
   );

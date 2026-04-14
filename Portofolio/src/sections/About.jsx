@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import PixelTransition from './../../animations/effects/PixelTransition';
+import PixelTransition from '../animations/effects/PixelTransition';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import gsap from "gsap";

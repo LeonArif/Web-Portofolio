@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import "./../css/Navbar.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -91,69 +90,21 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      {/* Navbar responsive */}
-      <nav className="flex top-0 justify-between items-center z-50 px-2 sm:px-4 md:px-10 lg:px-20 py-3 sm:py-4">
-        <div className="flex items-center text-white">
-          <img className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" src="/images/navbar/pp.png" alt="logo"/>
-          <span className="ml-1 sm:ml-2 text-[10px] sm:text-xs md:text-sm lg:text-base font-semibold">LEONARD</span>
-        </div>
-        <div className="flex gap-2 sm:gap-4 md:gap-6 lg:gap-10 justify-end items-center">
-          <button
-            className="px-0.5 sm:px-1 md:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
-            onClick={() => {
-              const el = document. getElementById('about');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            ABOUT
-          </button>
-          <button
-            className="px-0.5 sm:px-1 md:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
-            onClick={() => {
-              const el = document.getElementById('experience');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            EXPERIENCE
-          </button>
-          <button
-            className="px-0.5 sm:px-1 md:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
-            onClick={() => {
-              const el = document.getElementById('projects');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            PROJECTS
-          </button>
-          <button
-            className="px-0.5 sm:px-1 md:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] md:text-sm lg:text-base rounded text-white underline-animate whitespace-nowrap"
-            onClick={() => {
-              const el = document.getElementById('contacts');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            CONTACTS
-          </button>
-        </div>
-      </nav>
-
-      {/* Section Home */}
-      <section
-        id="home"
-        ref={sectionRef}
-        className="
-          scroll-mt-24 
-          flex 
-          flex-col 
-          items-center 
-          justify-center 
-          min-h-[70vh] 
-          pb-16 md:pb-20
-          text-white 
-          px-4 sm:px-6 md:px-8
-          relative"
-      >
+    <section
+      id="home"
+      ref={sectionRef}
+      className="
+        scroll-mt-24 
+        flex 
+        flex-col 
+        items-center 
+        justify-center 
+        min-h-[70vh] 
+        pb-16 md:pb-20
+        text-white 
+        px-4 sm:px-6 md:px-8
+        relative"
+    >
         {/* Star SVG */}
         <motion.div
           className="relative flex items-center justify-center w-full pb-8 pt-10"
@@ -205,7 +156,7 @@ export default function Home() {
         {/* Heading */}
         <motion. h1
           ref={hiRef}
-          className="text-3xl md:text-5xl mb-5 text-center font-bold px-2"
+          className="text-3xl md:text-5xl mb-5 text-center font-semibold px-2"
         >
           Turning your ideas into reality! 
         </motion.h1>
@@ -243,7 +194,6 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 flex justify-center">
           <div className="w-[90%] h-[2px] bg-gradient-to-r from-transparent via-white to-transparent"></div>
         </div>
-      </section>
-    </>
+    </section>
   );
 }

@@ -73,6 +73,7 @@ export default function Organization() {
 
   return (
     <section
+      id="organization"
       ref={sectionRef}
       className="w-full px-4 md:px-8 flex flex-col py-20 items-center gap-10 md:gap-14 bg-black relative
         after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px]

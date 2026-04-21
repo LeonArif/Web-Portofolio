@@ -4,7 +4,7 @@ import './css/Navbar.css'
 
 const navItems = [
   { label: 'ABOUT', hash: '/about' },
-  { label: 'EXPERIENCE', hash: '/experience' },
+  { label: 'SKILLS', hash: '/skills' },
   { label: 'ORGANIZATION', hash: '/organization' },
   { label: 'PROJECTS', hash: '/projects' },
   { label: 'CONTACTS', hash: '/contacts' },

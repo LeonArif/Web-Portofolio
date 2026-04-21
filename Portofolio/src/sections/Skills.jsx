@@ -3,17 +3,17 @@ import { motion } from "framer-motion";
 
 // Data logo - gampang banget ditambah! 
 const techLogos = [
-  { name: "Git", image: "/images/experience/git.png" },
-  { name: "HTML", image:  "/images/experience/html.png" },
-  { name: "CSS", image:  "/images/experience/css.png" },
-  { name: "JavaScript", image:  "/images/experience/js.jpeg" },
-  { name: "Tailwind", image: "/images/experience/tailwind.png" },
-  { name: "Node. js", image: "/images/experience/node.png" },
-  { name: "React", image:  "/images/experience/react.png" },
-  { name: "Java", image: "/images/experience/java.png" },
-  { name: "C", image:  "/images/experience/c.png" },
-  { name: "Python", image: "/images/experience/python.png" },
-  { name: "C++", image:  "/images/experience/cpp.png" },
+  { name: "Git", image: "/images/skills/git.png" },
+  { name: "HTML", image:  "/images/skills/html.png" },
+  { name: "CSS", image:  "/images/skills/css.png" },
+  { name: "JavaScript", image:  "/images/skills/js.jpeg" },
+  { name: "Tailwind", image: "/images/skills/tailwind.png" },
+  { name: "Node. js", image: "/images/skills/node.png" },
+  { name: "React", image:  "/images/skills/react.png" },
+  { name: "Java", image: "/images/skills/java.png" },
+  { name: "C", image:  "/images/skills/c.png" },
+  { name: "Python", image: "/images/skills/python.png" },
+  { name: "C++", image:  "/images/skills/cpp.png" },
 ];
 
 // Split jadi 3 layer (bisa disesuaikan)
@@ -63,10 +63,10 @@ function InfiniteCarouselRow({ items, direction = "left", duration = 20 }) {
   );
 }
 
-export default function Experience() {
+export default function Skills() {
   return (
     <section
-      id="experience"
+      id="skills"
       className="w-full py-20 px-6 md:px-16 bg-black text-white flex flex-col items-center relative
         after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px]
         after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent"

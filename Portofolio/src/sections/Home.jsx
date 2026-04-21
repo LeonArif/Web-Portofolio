@@ -171,8 +171,7 @@ export default function Home() {
             sequence={[
               "Front-end Website", 1500,
               "Back-end Solutions", 1500,
-              "WordPress Sites", 1500,
-              "UI/UX Designs", 1500,
+              "AI/Machine Learning", 1500,
               "All the projects you imagine!", 1500,
             ]}
             wrapper="span"

@@ -16,6 +16,9 @@ export default function Projects() {
       title: "Stressdew Valley",
       desc: "Final project for Object Oriented Programming Class",
       detail: "A Stardew Valley clone developed by a team of five using Java and Java Swing for the GUI. The game features core mechanics such as fishing, planting, and more, offering players a simplified farming simulation experience.",
+      links: [
+        { label: "GitHub", href: "https://github.com/LeonArif/Stressdew-Valley" },
+      ],
       tools: ["Java", "Github", "Java Swing"]
     },
     {
@@ -23,6 +26,9 @@ export default function Projects() {
       title: "AdaUang",
       desc: "Final project for Software Engineering Class",
       detail: "A loan tracking application developed by a team of six using Java.  The app includes features such as authentication, financial report generation, monthly payment tracking, contract management, and more, providing users with comprehensive loan oversight tools.",
+      links: [
+          { label: "GitHub", href: "https://github.com/LeonArif/IF2050-2025-K3J-AdaUang" },
+      ],
       tools: ["Java", "Github", "Java Swing"]
     },
     {
@@ -30,7 +36,27 @@ export default function Projects() {
       title: "IIT Project",
       desc:  "Internship Project for IIT Tech Department",
       detail: "A project management web application built by a team of three using React, Node.js, TypeScript, SQL, Drizzle, and GitHub.  The website enables users to submit and manage their own personal projects efficiently, featuring task tracking, collaboration tools, and automated workflows.",
+      links: [
+        { label: "GitHub", href: "https://github.com/LeonArif/iit-management" },
+      ],
       tools: ["React", "Github", "Node.js", "TypeScript", "SQL", "Drizzle"]
+    },
+    {
+      img: "/images/project/battlecode.jpeg",
+      title: "BattleCode",
+      desc:  "Made A Battlecode Robot as a project for Strategy Algorithm",
+      detail: (
+        <>
+          BattleCode is an annual MIT programming competition where teams develop AI bots to compete in a strategy game environment.<br />
+          <b>GreedyPainter:</b> Focuses on painting the most tiles each turn using a greedy strategy.<br />
+          <b>GreedyExpansion:</b> Expands territory by always moving to the nearest unclaimed area, prioritizing shortest distance.<br />
+          <b>GPBSM (Main Bot):</b> Combines multiple evaluation metrics and picks the action with the highest calculated greedy score each turn.
+        </>
+      ),
+      links: [
+        { label: "GitHub", href: "https://github.com/LeonArif/Tubes1_STIma" },
+      ],
+      tools: ["Java", "Gradle", "Github"]
     },
   ];
 
@@ -211,6 +237,22 @@ export default function Projects() {
               
               <h2 className="text-2xl md:text-3xl font-semibold text-white mb-3">{openProject.title}</h2>
               <p className="text-sm md:text-base text-gray-300 mb-6 leading-relaxed">{openProject.detail}</p>
+
+              {openProject.links && openProject.links.length > 0 && (
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {openProject.links.map((link, idx) => (
+                    <a
+                      key={idx}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center rounded-lg border border-white/15 bg-white px-4 py-2 text-sm font-semibold text-black transition-transform duration-300 hover:scale-[1.03] hover:bg-gray-200"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
               
               <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-700">
                 {openProject.tools && openProject.tools.map((tool, idx) => (

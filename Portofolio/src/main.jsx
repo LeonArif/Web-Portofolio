@@ -6,10 +6,10 @@ import Home from './sections/Home.jsx'
 import About from './sections/About.jsx'
 import Contacts from './sections/Contacts.jsx'
 import Organization from './sections/Organization.jsx'
-import Experience from './sections/Experience.jsx'
+import Skills from './sections/Skills.jsx'
 import Projects from './sections/Projects.jsx'
 
-const HOME_SECTION_IDS = new Set(['about', 'experience', 'organization', 'contacts'])
+const HOME_SECTION_IDS = new Set(['about', 'skills', 'organization', 'contacts'])
 
 function parseRoute(pathname) {
   const normalizedPath = pathname.replace(/\/+$/, '') || '/'
@@ -119,7 +119,7 @@ function App() {
           <>
             <Home />
             <About />
-            <Experience />
+            <Skills />
             <Organization />
             <Contacts />
           </>

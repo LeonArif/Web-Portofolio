@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
-import './css/Navbar.css'
 
 const navItems = [
   { label: 'ABOUT', hash: '/about' },
@@ -14,6 +13,31 @@ export default function Navbar({ activePath, onNavigate }) {
   const buildPath = (path) => path
   const navTextClass = 'text-[10px] sm:text-[10px] md:text-sm lg:text-base'
   const navLabelClass = `${navTextClass} font-semibold tracking-[0.25em]`
+  const underlineStyles = `
+    .underline-animate {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .underline-animate::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    }
+
+    .underline-animate:hover::after,
+    .underline-animate:focus::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  `
 
   const handleNavClick = (path) => {
     if (typeof onNavigate === 'function') {
@@ -40,6 +64,7 @@ export default function Navbar({ activePath, onNavigate }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
+      <style>{underlineStyles}</style>
       <nav className="mx-auto w-full max-w-7xl px-3 py-4 sm:px-4 md:px-8 lg:px-10">
         <div className="md:hidden">
           <div className="flex items-center justify-between gap-3">

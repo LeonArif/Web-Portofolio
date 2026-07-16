@@ -11,6 +11,15 @@ export default function Projects() {
   const [openProject, setOpenProject] = useState(null);
 
   const projects = [
+    // template
+    // {
+    //   img:"/images/project/codex.png",
+    //   title:"",
+    //   desc:"",
+    //   detail:"",
+    //   links:[],
+    //   tools:[]
+    // }
     {
       img:  "/images/project/stressdew.png",
       title: "Stressdew Valley",
@@ -58,6 +67,22 @@ export default function Projects() {
       ],
       tools: ["Java", "Gradle", "Github"]
     },
+    {
+      img: "/images/project/codex.png",
+      title: "CodeX",
+      desc: "Interactive programming learning platform with real-time code execution",
+      detail: (
+        <>
+          An interactive web-based learning platform for programming languages. It features an in-browser Python code runner for real-time feedback, an automated progress tracking system integrated with Supabase, and secure JWT-based authentication via Google OAuth.
+        </>
+      ),
+      links: [
+        { label: "GitHub", href: "https://github.com/LeonArif/CodeX-PAWM" },
+        { label: "Website Link", href: "https://code-x-pawm.vercel.app/" },
+      ],
+      tools: ["Next.js", "Express.js", "Supabase", "Google OAuth", "JWT", "Tailwind CSS"]
+    },
+    
   ];
 
   useEffect(() => {

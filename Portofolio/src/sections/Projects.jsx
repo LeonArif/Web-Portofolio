@@ -82,7 +82,123 @@ export default function Projects() {
       ],
       tools: ["Next.js", "Express.js", "Supabase", "Google OAuth", "JWT", "Tailwind CSS"]
     },
-    
+    {
+      img: "/images/project/sekuroweb.png",
+      title: "Sekuro 18 Web App",
+      desc: "Centralized information hub and timeline platform for robotics orientation",
+      detail: (
+        <>
+          A web application designed as a centralized information hub and timeline tracker for a multi-week robotics organization orientation. Built using Next.js and integrated with Supabase for robust backend services, providing participants with seamless access to event schedules, announcements, and key resources.
+        </>
+      ),
+      links: [
+        { label: "Website Link", href: "https://sekuro2026.vercel.app/" },
+        { label: "GitHub", href: "https://github.com/19623248Git/sekuro-web-app" },
+      ],
+      tools: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS", "Vercel"]
+    },
+    {
+      img: "/images/project/supplychain.png",
+      title: "SupplyChain",
+      desc: "Supply-chain prototype integrating optimization algorithms and cryptographic modules",
+      detail: (
+        <>
+          A full-stack supply-chain simulation featuring a Go backend and a React + Vite (TypeScript) frontend. It includes an <b>Algorithm Lab</b> to compare and visualize Dynamic Programming vs. Greedy heuristics for route optimization, alongside a custom <b>cryptography module</b> featuring SHA-256 hashing, ECDSA signatures, and a basic blockchain for tamper detection.
+        </>
+      ),
+      links: [
+        { label: "GitHub", href: "https://github.com/LeonArif/SupplyChain" },
+      ],
+      tools: ["Golang",  "React", "TypeScript", "Vite", "ECDSA", "Algorithms"]
+    },
+    {
+      img: "/images/project/chadzapp.png",
+      title: "ChaDZapp",
+      desc: "Secure web chat application with end-to-end cryptography and JWT authentication",
+      detail: (
+        <>
+          A secure, containerized web chat application developed in a team of three. It features robust <b>cryptographic protocols</b> including ECDH and HKDF for key exchange, AES-256 for message encryption/decryption, and custom JWT-based authentication. The FastAPI backend acts as a zero-knowledge intermediary that never stores or accesses raw communication keys.
+        </>
+      ),
+      links: [
+        { label: "GitHub", href: "https://github.com/LeonArif/Tugas3_ChaDZapp" },
+        { label: "Website Link", href: "https://tugas3-cha-d-zapp-ecqj6045b-leons-projects-88e3bd87.vercel.app/login"}
+      ],
+      tools: ["FastAPI", "React", "TypeScript", "ECDH", "AES-256", "JWT", "Docker"]
+    },
+    {
+      img: "/images/project/rustdz.png",
+      title: "DOM CSS Selector Traversal",
+      desc: "HTML DOM parsing and traversal visualization using BFS & DFS algorithms",
+      detail: (
+        <>
+          A full-stack application that parses any web page's HTML into an internal tree structure and visualizes DOM traversal using <b>BFS and DFS algorithms</b>. Built with a high-performance <b>Rust (Axum/Tokio)</b> backend for rapid parsing and concurrent execution analysis, paired with a React and TypeScript frontend for real-time interactive tree visualization.
+        </>
+      ),
+      links: [
+        { label: "Website Link", href: "https://tubes2-rust-dz.vercel.app/" },
+        { label: "GitHub", href: "https://github.com/LeonArif/Tubes2_RustDz" },
+      ],
+      tools: ["Rust", "Axum", "React", "TypeScript", "Vite", "Docker", "Algorithms"]
+    },
+    {
+      img: "/images/project/jalalove.png", // Sesuaikan dengan path gambar aslimu
+      title: "Judol Detector",
+      desc: "Chrome extension utilizing parallel string-matching algorithms and OCR to detect illicit content",
+      detail: (
+        <>
+          A real-time Chrome Extension developed in a team of three to detect and blur illicit gambling content. It runs <b>six string-matching and pattern recognition algorithms in parallel</b> (including KMP, Boyer-Moore, Aho-Corasick, Rabin-Karp, and Weighted Levenshtein Fuzzy Matching) on web text, while leveraging <b>Tesseract.js OCR</b> to scan and blur text embedded within images.
+        </>
+      ),
+      links: [
+        { label: "GitHub", href: "https://github.com/suryasuharna23/Tubes3_Jalalove" },
+      ],
+      tools: ["TypeScript", "Chrome Extension API", "Vite", "Tesseract.js", "Algorithms", "Manifest V3"]
+    },
+    {
+      img: "/images/project/jeopardy.png", // Sesuaikan dengan path gambar aslimu
+      title: "Jeopardy Platform",
+      desc: "Interactive real-time quiz platform with live synchronization and secure host controls",
+      detail: (
+        <>
+          A full-stack, real-time Jeopardy platform built with <b>Next.js (App Router)</b> and <b>Firebase</b>. It features live state synchronization for a game host dashboard and players' buzzer interfaces via Firestore, coupled with secure role-based access control (RBAC) and Firebase Security Rules to prevent unauthorized client modifications.
+        </>
+      ),
+      links: [
+        { label: "GitHub", href: "https://github.com/LeonArif/jeopardy" }, // Sesuaikan jika reponya berbeda
+      ],
+      tools: ["Next.js", "Firebase", "TypeScript", "Tailwind CSS", "Real-time Database"]
+    },
+    {
+      img: "/images/project/freshguard.png", // Sesuaikan dengan path gambar aslimu
+      title: "FreshGuard",
+      desc: "IoT & AI-powered smart food freshness detection system with real-time predictions",
+      detail: (
+        <>
+          An end-to-end intelligent IoT system developed to predict food spoilage in real-time. The system triggers an <b>ESP32 microcontroller</b> via cloud polling (Supabase) to read multi-sensor data (BME280 & MQ-135), processes the telemetry through a custom-trained <b>XGBoost machine learning model</b>, and serves real-time freshness classifications (FRESH/WARN/SPOILED) on a React dashboard.
+        </>
+      ),
+      links: [
+        { label: "GitHub", href: "https://github.com/LeonArif/Reksti_FreshGuard" },
+        { label: "Website Link", href: "https://reksti-fresh-guard.vercel.app/" },
+      ],
+      tools: ["React", "Node.js", "Express", "Supabase", "Python", "XGBoost", "ESP32", "IoT"]
+    },
+    {
+      img: "/images/project/resistdz.png", // Sesuaikan dengan path gambar aslimu
+      title: "resistDZ",
+      desc: "Healthcare ML platform for Antimicrobial Resistance (AMR) prediction and prediction schema validation",
+      detail: (
+        <>
+          A full-stack healthcare web application designed to predict <b>Antimicrobial Resistance (AMR)</b> patterns. It pairs a React + Vite frontend with a Flask (Python) backend engineered to load and execute pre-trained machine learning pipelines (Histogram-based Gradient Boosting/XGBoost) for tabular classification, featuring a structured schema validator for input safety.
+        </>
+      ),
+      links: [
+        { label: "Website Link", href: "https://tubes2-rust-dz.vercel.app/" }, // Ganti jika ada link khusus resistDZ
+        { label: "GitHub", href: "https://github.com/LeonArif/resistDZ" }, // Sesuaikan dengan repo aslimu jika berbeda
+      ],
+      tools: ["Flask", "React", "TypeScript", "Python", "Scikit-learn", "XGBoost", "Vercel"]
+    },
   ];
 
   useEffect(() => {

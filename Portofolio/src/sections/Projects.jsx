@@ -128,7 +128,7 @@ export default function Projects() {
     },
     {
       img: "/images/project/rustdz.png",
-      title: "DOM CSS Selector Traversal",
+      title: "RustDZ",
       desc: "HTML DOM parsing and traversal visualization using BFS & DFS algorithms",
       detail: (
         <>
@@ -165,7 +165,8 @@ export default function Projects() {
         </>
       ),
       links: [
-        { label: "GitHub", href: "https://github.com/LeonArif/jeopardy" }, // Sesuaikan jika reponya berbeda
+        { label: "GitHub", href: "https://github.com/LeonArif/jeopardy" },
+        { label: "Website Link", href: "https://jeopardy-topaz-six.vercel.app/dashboard" }
       ],
       tools: ["Next.js", "Firebase", "TypeScript", "Tailwind CSS", "Real-time Database"]
     },
@@ -186,7 +187,7 @@ export default function Projects() {
     },
     {
       img: "/images/project/resistdz.png", // Sesuaikan dengan path gambar aslimu
-      title: "resistDZ",
+      title: "ResistDZ",
       desc: "Healthcare ML platform for Antimicrobial Resistance (AMR) prediction and prediction schema validation",
       detail: (
         <>

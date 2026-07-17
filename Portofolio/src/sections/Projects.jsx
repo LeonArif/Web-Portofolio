@@ -200,6 +200,21 @@ export default function Projects() {
       ],
       tools: ["Flask", "React", "TypeScript", "Python", "Scikit-learn", "XGBoost", "Vercel"]
     },
+    {
+      img: "/images/project/rag.png", // Sesuaikan dengan path gambar aslimu
+      title: "NoLimit RAG Chatbot",
+      desc: "Retrieval-Augmented Generation chatbot with vector search and strict source-citing constraints",
+      detail: (
+        <>
+          An advanced Retrieval-Augmented Generation (RAG) chatbot developed for a Data Science technical assessment. It extracts and chunks PDF documents, processes them using <b>Sentence-Transformers (all-MiniLM-L6-v2)</b>, and indexes them via <b>FAISS / Cosine Similarity</b> for vector retrieval. The application orchestrates the <b>Google GenAI SDK (Gemini 2.5)</b> to generate exact, hallucination-free answers with page-level source citations.
+        </>
+      ),
+      links: [
+        { label: "Website Link", href: "https://nolimit-ragchatbot.streamlit.app/" },
+        { label: "GitHub", href: "https://github.com/LeonArif/nolimit-ds-test-Leonard-Arif-Sutiono" }, // Sesuaikan dengan repo aslimu jika berbeda
+      ],
+      tools: ["Python", "Streamlit", "Gemini API", "FAISS", "Sentence-Transformers", "RAG"]
+    },
   ];
 
   useEffect(() => {
